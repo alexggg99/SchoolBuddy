@@ -16,6 +16,11 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @RequestMapping("/greeting")
     @ResponseBody
     public String json(){
