@@ -20,7 +20,7 @@
 //
 //app.controller('HomeController', HomeController);
 
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngResource']);
 
 //Define Routing for app
 app.config(['$routeProvider','$locationProvider',
@@ -28,11 +28,15 @@ app.config(['$routeProvider','$locationProvider',
         $routeProvider.
             when('/', {
                 templateUrl: 'templates/index.html',
-                controller: 'IndexController'
+                controller: 'SchoolController'
             }).
             when('/login', {
                 templateUrl: 'templates/login.html',
                 controller: 'LoginController'
+            }).
+            when('/classrooms', {
+                templateUrl: 'templates/classrooms.html',
+                controller: 'ClassroomController'
             }).
             otherwise({
                 redirectTo: '/'
