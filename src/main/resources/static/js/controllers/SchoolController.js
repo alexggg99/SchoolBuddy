@@ -7,6 +7,7 @@ app.controller('SchoolController', function($scope, SchoolService){
     $scope.fields = ['id' ,'name', 'address', 'director'];
     $scope.school = {};
     $scope.show = function(school){
-        console.log(school);
+        $scope.school = school;
+        $('#editModal').modal('toggle');
     }
 })
