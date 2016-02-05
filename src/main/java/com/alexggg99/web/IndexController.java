@@ -21,12 +21,15 @@ public class IndexController {
         return "login";
     }
 
-    @RequestMapping("/greeting")
-    @ResponseBody
-    public String json(){
-        return "{\"id\":1,\"content\":\"Hello, World!\"}";
+    @RequestMapping("/schools")
+    public String schools() {
+        return "index";
     }
 
+    @RequestMapping("/classrooms")
+    public String classrooms() {
+        return "index";
+    }
 
 
 }

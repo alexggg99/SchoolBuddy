@@ -27,12 +27,17 @@ app.config(['$routeProvider','$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'templates/index.html',
-                controller: 'SchoolController'
+                templateUrl: 'templates/welcome.html',
+                controller: 'WelcomeController',
+                controllerAs:'home'
             }).
             when('/login', {
                 templateUrl: 'templates/login.html',
                 controller: 'LoginController'
+            }).
+            when('/schools', {
+                templateUrl: 'templates/schools.html',
+                controller: 'SchoolController'
             }).
             when('/classrooms', {
                 templateUrl: 'templates/classrooms.html',

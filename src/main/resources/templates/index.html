@@ -34,17 +34,17 @@
 <body ng-app="myApp">
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="MenuController">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">School Body</a>
+            <a class="navbar-brand" href="/">School Body</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Schools</a></li>
-            <li><a href="">Classrooms</a></li>
-            <li><a href="">Activities</a></li>
+            <li ng-class="{'active':page == '/schools'}"><a href="/schools">Schools</a></li>
+            <li ng-class="{'active':page == '/classrooms'}"><a href="/classrooms">Classrooms</a></li>
+            <li ng-class="{'active':page == '/activities'}"><a href="/activities">Activities</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController">
+        <ul class="nav navbar-nav navbar-right">
             <li ng-click="logout()"><a ng-href="/logout">Logout</a></li>
         </ul>
     </div>
@@ -69,8 +69,11 @@
 
 <script src="js/app.js"></script>
 <script src="js/controllers/SchoolController.js"></script>
-<script src="js/controllers/LogoutController.js"></script>
+<script src="js/controllers/MenuController.js"></script>
+<script src="js/controllers/ClassroomController.js"></script>
+<script src="js/controllers/WelcomeController.js"></script>
 <script src="js/services/SchoolService.js"></script>
+<script src="js/services/ClassroomService.js"></script>
 <script src="js/filters/filters.js"></script>
 
 </body>

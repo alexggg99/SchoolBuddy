@@ -22,7 +22,7 @@ public class SchoolController {
     private SchoolRepository schoolRepo;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<School> getContacts(){
+    public List<School> getSchools(){
         List<School> schools = (List<School>) schoolRepo.findAll();
         return schools;
     }
