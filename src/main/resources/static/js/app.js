@@ -44,17 +44,37 @@ app.config(['$routeProvider','$locationProvider',
         $locationProvider.html5Mode(true).hashPrefix('!');
     }]);
 
-angular.module('loginPage', ['ngRoute'])
-    .config(['$locationProvider',
-        function($locationProvider) {
+angular.module('loginPage', ['ngRoute', 'ngStorage', 'angular-jwt'])
+    .config(
+        function($locationProvider, jwtInterceptorProvider, $httpProvider) {
             $locationProvider.html5Mode(true).hashPrefix('!');
-        }])
-    .controller('LoginController', function($route, $scope){
+            jwtInterceptorProvider.tokenGetter = function(store) {
+                return store.get('jwt');
+            }
+            $httpProvider.interceptors.push('jwtInterceptor');
+        })
+    .controller('LoginController', function($http, $scope, $localStorage){
 
         $scope.error;
 
         if(location.search != ""){
             $scope.error = true;
+        }
+
+        $scope.user = {};
+
+        $scope.login = function() {
+            $http({
+                url: '/login',
+                method: 'POST',
+                data: $scope.user
+            }).then(function(response) {
+                //store.set('jwt', response.data.id_token);
+                $localStorage.jwt = response.data.id_token;
+                //location.reload();
+            }, function(error) {
+                alert(error);
+            });
         }
 
     })

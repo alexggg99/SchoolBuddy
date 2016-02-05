@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private RoleRepository roleRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public final User loadUserByUsername(String username) throws UsernameNotFoundException {
         com.alexggg99.domain.User user = userRepo.findUserByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User %s does not exist!", username));

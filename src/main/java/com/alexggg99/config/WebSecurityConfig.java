@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Created by alexggg99 on 15.01.16.
@@ -20,6 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
+    @Autowired
+    private TokenAuthenticationService tokenAuthenticationService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .permitAll()
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .loginProcessingUrl("/login")
@@ -46,6 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").deleteCookies("JSESSIONID")
                 .and()
                 .rememberMe();
+
+        // Custom Token based authentication based on the header previously given to the client
+                 http.addFilterBefore(new StatelessAuthenticationFilter(tokenAuthenticationService),
+                         UsernamePasswordAuthenticationFilter.class);
 
 //        http.authorizeRequests().antMatchers("/**").permitAll();
 
@@ -56,5 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
 //        auth.inMemoryAuthentication().withUser("user").password("123").roles("USER");
     }
+
+
 
 }
