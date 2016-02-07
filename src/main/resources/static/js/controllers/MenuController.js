@@ -8,7 +8,7 @@ app.controller('MenuController', function($scope, $rootScope, $location){
     }
 
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-        $scope.page = $location.$$path;
+        $scope.page = $location.$$path.slice(0,7);
     });
 
 })

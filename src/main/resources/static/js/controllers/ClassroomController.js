@@ -7,7 +7,12 @@ app.controller('ClassroomController', function($scope, $location, $routeParams, 
     $scope.fields = ['name', 'school', 'teacher'];
     $scope.openClassroom = function (classroomId){
         $location.path('/classrooms/' + classroomId);
-        //console.log(classroomId);
-        //$scope.classroom = ClassroomService.get($routeParams.id | -1);
     };
+    //
+    if(angular.isDefined($routeParams.id)){
+        ClassroomService.get({id:$routeParams.id}, function(classroom){
+            $scope.classroom = classroom;
+        });
+    }
+
 })
