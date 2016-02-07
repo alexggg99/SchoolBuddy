@@ -39,14 +39,14 @@ public class ClassroomController {
     }
 
     @RequestMapping(value = "/{classroomId}",method = RequestMethod.PUT)
-    public Classroom updateContact(@PathVariable long classroomId ,@RequestBody Classroom classroom){
+    public Classroom updateClassroom(@PathVariable long classroomId ,@RequestBody Classroom classroom){
         classroom.setId(classroomId);
         classroomRepository.save(classroom);
         return classroom;
     }
 
     @RequestMapping(value = "/{classroomId}",method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteContact(@PathVariable long classroomId){
+    public ResponseEntity<Void> deleteClassroom(@PathVariable long classroomId){
         classroomRepository.delete(classroomId);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

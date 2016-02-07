@@ -31,10 +31,6 @@ app.config(['$routeProvider','$locationProvider',
                 controller: 'WelcomeController',
                 controllerAs:'home'
             }).
-            when('/login', {
-                templateUrl: 'templates/login.html',
-                controller: 'LoginController'
-            }).
             when('/schools', {
                 templateUrl: 'templates/schools.html',
                 controller: 'SchoolController'
@@ -43,11 +39,36 @@ app.config(['$routeProvider','$locationProvider',
                 templateUrl: 'templates/classrooms.html',
                 controller: 'ClassroomController'
             }).
+            when('/classrooms/:id', {
+                templateUrl: 'templates/classroom.html',
+                controller: 'ClassroomController'
+            }).
+            when('/activities', {
+                templateUrl: 'templates/activities.html',
+                controller: 'ActivityController'
+            }).
             otherwise({
                 redirectTo: '/'
             });
         $locationProvider.html5Mode(true).hashPrefix('!');
     }]);
+
+//app.run(['$rootScope', '$log', function($rootScope, $log){
+//    $rootScope.$on('$routeChangeSuccess', function(event, current, previos){
+//        $log.debug('route changed');
+//
+//        $log.debug(event);
+//        $log.debug(current);
+//        $log.debug(previos);
+//    })
+//    $rootScope.$on('$routeChangeError', function(event, current, previos){
+//        $log.debug('route changed');
+//
+//        $log.debug(event);
+//        $log.debug(current);
+//        $log.debug(previos);
+//    })
+//}]);
 
 angular.module('loginPage', ['ngRoute'])
     .config(['$locationProvider',

@@ -1,0 +1,22 @@
+<input type="search" class="form-control" placeholder="Search" ng-model="query"/>
+<div class="blank"></div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Registered Activities</div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th ng-repeat="field in fields">
+                    {{field | labelCase}}
+                </th>
+            </tr>
+            </thead>
+            <tr ng-repeat="activity in activities | filter: query">
+                <td><a href="/activities/{{ activity.id }}/detail">{{ activity.name }}</a></td>
+                <td><a href="/classroom/{{ activity.classroom.id }}/detail">{{ activity.classroom.name }}</a></td>
+                <td>{{ activity.date }}</td>
+            </tr>
+        </table>
+    </div>

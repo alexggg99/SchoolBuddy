@@ -31,5 +31,9 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/activities")
+    public String activities() {
+        return "index";
+    }
 
 }
