@@ -1,11 +1,40 @@
-<input type="search" class="form-control" placeholder="Search" ng-model="query"/>
+<h1>Search Activities</h1>
+<form class="form-inline" name="activitiesSearch">
+    <div class="form-group">
+        <label for="classroomlist">Classroom</label>
+        <select ng-model="selectedClassroom"
+                ng-options="classroom as classroom.name for classroom in classrooms"
+                class="form-control"
+                id="classroomlist"
+                required></select>
+
+    </div>
+    <div class="form-group">
+        <label for="monthlist">Month</label>
+        <select ng-model="selectedMonth" class="form-control" id="monthlist" required>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+    <button ng-click="search()" class="btn btn-default" ng-disabled="activitiesSearch.$invalid">Search</button>
+</form>
 <div class="blank"></div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Registered Activities</div>
 
         <!-- Table -->
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th ng-repeat="field in fields">
@@ -13,7 +42,7 @@
                 </th>
             </tr>
             </thead>
-            <tr ng-repeat="activity in activities | filter: query">
+            <tr ng-repeat="activity in activities">
                 <td><a href="/activities/{{ activity.id }}/detail">{{ activity.name }}</a></td>
                 <td><a href="/classroom/{{ activity.classroom.id }}/detail">{{ activity.classroom.name }}</a></td>
                 <td>{{ activity.date }}</td>

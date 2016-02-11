@@ -15,4 +15,9 @@ app.controller('ClassroomController', function($scope, $location, $routeParams, 
         });
     }
 
+    if(angular.isDefined($routeParams.month)){
+        ClassroomService.get({id:$routeParams.id}, function(classroom){
+            $scope.classroom = classroom;
+        });
+    }
 })

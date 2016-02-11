@@ -46,6 +46,10 @@ app.config(['$routeProvider','$locationProvider',
             when('/activities', {
                 templateUrl: 'templates/activities.html',
                 controller: 'ActivityController'
+            })
+            .when('/classrooms/:id/detail/:month', {
+                templateUrl: 'templates/classroomDetail.html',
+                controller: 'ClassroomController'
             }).
             otherwise({
                 redirectTo: '/'

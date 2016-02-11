@@ -14,3 +14,5 @@ insert into classroom(id, name, school_id, teacher_id) values (2, 'Math', 1, 2)
 
 insert into activity(id, name, classroom_id, date) values (1, 'Reading book', 1, '2016-02-12')
 insert into activity(id, name, classroom_id, date) values (2, 'Checking homework', 1, '2016-01-25')
+insert into activity(id, name, classroom_id, date) values (3, 'Math visit', 2, '2016-01-22')
+insert into activity(id, name, classroom_id, date) values (4, 'Picnik lanch', 2, '2016-02-29')
