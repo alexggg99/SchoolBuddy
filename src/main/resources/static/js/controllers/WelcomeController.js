@@ -3,15 +3,15 @@
  */
 
 
-app.controller('WelcomeController', function($scope, $route, $log){
+app2.controller('WelcomeController', function($scope, $log){
 
     var vm = this;
     vm.message = 'Welcome to School Buddy!';
     vm.reloadCount = 0;
-    vm.refresh = function(){
-        $log.debug($route.current);
-        $log.debug($route.routes);
-        $route.reload();
-    }
+    //vm.refresh = function(){
+    //    $log.debug($route.current);
+    //    $log.debug($route.routes);
+    //    $route.reload();
+    //}
 
 })

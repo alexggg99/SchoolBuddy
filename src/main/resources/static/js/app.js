@@ -20,42 +20,47 @@
 //
 //app.controller('HomeController', HomeController);
 
-var app = angular.module('myApp', ['ngRoute', 'ngResource']);
-
-//Define Routing for app
-app.config(['$routeProvider','$locationProvider',
-    function($routeProvider, $locationProvider) {
-        $routeProvider.
-            when('/', {
-                templateUrl: 'templates/welcome.html',
-                controller: 'WelcomeController',
-                controllerAs:'home'
-            }).
-            when('/schools', {
-                templateUrl: 'templates/schools.html',
-                controller: 'SchoolController'
-            }).
-            when('/classrooms', {
-                templateUrl: 'templates/classrooms.html',
-                controller: 'ClassroomController'
-            }).
-            when('/classrooms/:id', {
-                templateUrl: 'templates/classroom.html',
-                controller: 'ClassroomController'
-            }).
-            when('/activities', {
-                templateUrl: 'templates/activities.html',
-                controller: 'ActivityController'
-            })
-            .when('/classrooms/:id/detail/:month', {
-                templateUrl: 'templates/classroomDetail.html',
-                controller: 'ClassroomController'
-            }).
-            otherwise({
-                redirectTo: '/'
-            });
-        $locationProvider.html5Mode(true).hashPrefix('!');
-    }]);
+//var app = angular.module('myApp', ['ngRoute', 'ngResource']);
+//
+////Define Routing for app
+//app.config(['$routeProvider','$locationProvider',
+//    function($routeProvider, $locationProvider) {
+//        $routeProvider.
+//            when('/', {
+//                templateUrl: 'templates/welcome.html',
+//                controller: 'WelcomeController',
+//                controllerAs:'home'
+//            }).
+//            when('/schools', {
+//                templateUrl: 'templates/schools.html',
+//                controller: 'SchoolController'
+//            }).
+//            when('/classrooms', {
+//                templateUrl: 'templates/classrooms.html',
+//                controller: 'ClassroomController'
+//            }).
+//            when('/classrooms/:id', {
+//                templateUrl: 'templates/classroom.html',
+//                controller: 'ClassroomController'
+//            }).
+//            when('/activities', {
+//                templateUrl: 'templates/activities.html',
+//                controller: 'ActivityController',
+//                resolve: {
+//                    activities: function(ActivityService){
+//                        return ActivityService.query();
+//                    }
+//                }
+//            })
+//            .when('/classrooms/:id/detail/:month?', {
+//                templateUrl: 'templates/classroomDetail.html',
+//                controller: 'ClassroomController'
+//            }).
+//            otherwise({
+//                redirectTo: '/'
+//            });
+//        $locationProvider.html5Mode(true).hashPrefix('!');
+//    }]);
 
 //app.run(['$rootScope', '$log', function($rootScope, $log){
 //    $rootScope.$on('$routeChangeSuccess', function(event, current, previos){
@@ -87,4 +92,32 @@ angular.module('loginPage', ['ngRoute'])
             $scope.error = true;
         }
 
+    });
+
+var app2 = angular.module('stateApp', ['ui.router', 'ngResource']);
+    app2.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+        $locationProvider.html5Mode(true).hashPrefix('!');
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state('home', {
+                url : '/',
+                controller: 'WelcomeController',
+                controllerAs : 'home',
+                templateUrl: 'templates/welcome.html'
+            })
+            .state('schools', {
+                url: '/schools',
+                templateUrl: 'templates/schools.html',
+                controller: 'SchoolController'
+            }).
+            state('classrooms', {
+                url: '/classrooms',
+                templateUrl: 'templates/classrooms.html',
+                controller: 'ClassroomController'
+            }).
+            state('activities', {
+                url: '/activities',
+                templateUrl: 'templates/activities.html',
+                controller: 'ActivityController'
+            });
     })

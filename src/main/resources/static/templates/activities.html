@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="classroomlist">Classroom</label>
         <select ng-model="selectedClassroom"
-                ng-options="classroom as classroom.name for classroom in classrooms"
+                ng-options="classroom.id as classroom.name for classroom in classrooms"
                 class="form-control"
                 id="classroomlist"
                 required></select>
@@ -11,7 +11,8 @@
     </div>
     <div class="form-group">
         <label for="monthlist">Month</label>
-        <select ng-model="selectedMonth" class="form-control" id="monthlist" required>
+        <select ng-model="selectedMonth" class="form-control"
+                id="monthlist" required>
             <option value="1">January</option>
             <option value="2">February</option>
             <option value="3">March</option>

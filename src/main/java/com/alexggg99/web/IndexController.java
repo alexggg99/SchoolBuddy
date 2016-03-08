@@ -47,4 +47,9 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/classrooms/{id}/*")
+    public String classroomDetails() {
+        return "index";
+    }
+
 }
