@@ -1,0 +1,11 @@
+<div class="blank"></div>
+<div class="container">
+    <div class="row">
+        <p>Classroom: {{classroom.name}}</p>
+        <p>School: {{classroom.school.name}}</p>
+        <p>Director: {{classroom.school.director.name}}</p>
+    </div>
+</div>
+
+<div ui-view="classTeacherInfo"></div>
+<div ui-view="classMessage"></div>

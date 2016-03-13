@@ -41,6 +41,15 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/classrooms/{id}/summary")
+    public String classroom_parentClassroom_summary() {
+        return "index";
+    }
+
+//    @RequestMapping("/classrooms/{id}/detail/{month}")
+//    public String classroomDetailes() {
+//        return "index";
+//    }
 
     @RequestMapping("/activities")
     public String activities() {

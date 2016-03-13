@@ -17,15 +17,18 @@ public class School {
 
     private String name;
     private String address;
-    private String director;
+
+    @ManyToOne
+    @JoinColumn(name = "director_id")
+    private Teacher director;
 
     public School() {
     }
 
-    public School(String name, String address, String director) {
+    public School(String name, String address, Teacher director) {
         this.name = name;
         this.address = address;
-        director = director;
+        this.director = director;
     }
 
     public String getName() {
@@ -44,12 +47,12 @@ public class School {
         this.address = address;
     }
 
-    public String getDirector() {
+    public Teacher getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
-        director = director;
+    public void setDirector(Teacher director) {
+        this.director = director;
     }
 
     public long getId() {

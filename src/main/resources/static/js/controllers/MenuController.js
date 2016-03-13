@@ -5,6 +5,7 @@
 app2.controller('MenuController', function($scope, $rootScope, $location){
     $scope.logout = function(){
         location.href = '/logout';
+        //$urlRouterProvider.href('/logout');
     }
 
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {

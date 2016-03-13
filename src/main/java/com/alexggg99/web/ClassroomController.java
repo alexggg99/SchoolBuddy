@@ -27,7 +27,8 @@ public class ClassroomController {
     private ClassroomRepository classroomRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Classroom> getClassrooms(){
+    public List<Classroom> getClassrooms() throws InterruptedException {
+        Thread.sleep(1000);
         List<Classroom> classrooms = (List<Classroom>) classroomRepository.findAll();
         return classrooms;
     }

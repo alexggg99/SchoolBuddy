@@ -26,7 +26,8 @@ public class ActivitiesController {
     private ClassroomRepository classroomRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Activity> getActivities(){
+    public List<Activity> getActivities() throws InterruptedException {
+        Thread.sleep(1000);
         List<Activity> activities = (List<Activity>) activityRepository.findAll();
         return activities;
     }
