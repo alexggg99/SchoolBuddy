@@ -1,7 +1,12 @@
 package com.alexggg99.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by alexggg99 on 25.01.16.
@@ -18,10 +23,13 @@ public class Activity {
 
     private String name;
 
+    @NotNull
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date date;
 
@@ -65,4 +73,5 @@ public class Activity {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

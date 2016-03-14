@@ -22,6 +22,7 @@ public class User {
     private String username;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -1,6 +1,8 @@
 package com.alexggg99.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alexggg99 on 25.01.16.
@@ -24,6 +26,9 @@ public class Classroom {
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+    @OneToMany(mappedBy = "classroom" ,fetch = FetchType.LAZY)
+    private List<Activity> activityList = new ArrayList<>();
 
     public Classroom() {
     }
@@ -64,5 +69,13 @@ public class Classroom {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public List<Activity> getActivityList() {
+        return activityList;
+    }
+
+    public void setActivityList(List<Activity> activityList) {
+        this.activityList = activityList;
     }
 }

@@ -5,7 +5,7 @@
 app2.controller('ActivityController', function($scope, $state, activities, classrooms){
     $scope.activities = activities;
     $scope.classrooms = classrooms;
-    $scope.fields = ['name', 'classroom', 'date'];
+    $scope.fields = ['name', 'date'];
     $scope.activity = {};
     $scope.selectedMonth = angular.isUndefined($scope.selectedMonth) ? 1 : $scope.selectedMonth;   //default
     $scope.selectedClassroom = angular.isUndefined($scope.selectedClassroom) ? 1 : $scope.selectedClassroom; //default

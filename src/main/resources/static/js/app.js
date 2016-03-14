@@ -183,6 +183,7 @@ app2.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 });
 
 app2.run(['$rootScope', '$log', function ($rootScope, $log) {
+
     //$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     //    $log.debug('state changed');
     //    $log.debug('event', event);
